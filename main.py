@@ -1,11 +1,10 @@
-from app.logic.competencia import Competencia
+from app.view.menu import Menu
 
 
 def main():
     ''' Application initializer. '''
-    print('Hello math!')
-    com = Competencia()
-    com.nuevo_vehiculo()
+    menu: Menu = Menu()
+    menu.menu()
 
 
 if __name__ == '__main__':

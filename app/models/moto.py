@@ -13,6 +13,10 @@ class Moto(Vehiculo):
         self._aceleracion = aceleracion
         self._agilidad = agilidad
 
+    def get_pos(self) -> float:
+        ''' Function to know the vehicle position '''
+        return self._x_pos
+
     def avanzar(self) -> float:
         ''' Function to advance into the track '''
 

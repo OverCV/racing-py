@@ -29,7 +29,8 @@ class InputHelper:
     @staticmethod
     def in_str(prompt: str, options: tuple):
         while True:
-            user_input = input(prompt).strip().lower()
+            user_input = input(
+                prompt + '\n\n|> Ingresa una opción: ').strip().lower()
             if user_input in options:
                 return user_input
             print('Por favor, la opción ingresada no una de las definidas.')
