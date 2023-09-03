@@ -1,4 +1,4 @@
-from abc import ABC, abstractmethod
+from abc import ABC, abstractmethod, abstractproperty
 
 
 class Vehiculo(ABC):
@@ -9,7 +9,7 @@ class Vehiculo(ABC):
     ) -> object:
         self._cambios: dict = {'actual': 0, 'limite': cambios}
         self._velocidad: float = velocidad
-        self._capacidad: float = capacidad
+        self._capacidad: dict = {'actual': capacidad, 'total': capacidad}
 
     @abstractmethod
     def acelerar(self) -> bool:
@@ -26,8 +26,8 @@ class Vehiculo(ABC):
         pass
 
     @abstractmethod
-    def dar_capacidad(self) -> float:
-        ''' Returns the price of the vehicle. '''
+    def capacidad(self) -> float:
+        ''' Returns the left capacity of the vehicle in percentage. '''
         pass
 
     @abstractmethod

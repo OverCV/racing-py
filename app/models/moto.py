@@ -15,9 +15,10 @@ class Moto(Vehiculo):
 
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
-        if self.dar_capacidad() <= 0:
+        if self.capacidad() <= 0:
             return False
-        self._capacidad -= KM_DIESEL * (self._cambios['actual'] / 10)
+        self._capacidad['actual'] -= KM_GAL_MOTO * \
+            (self._cambios['actual'] / 10)
         self._velocidad += self._aceleracion
         return True
 
@@ -34,9 +35,11 @@ class Moto(Vehiculo):
         self._velocidad = 0
         return True
 
-    def dar_capacidad(self) -> float:
-        ''' Returns the capacity of the vehicle. '''
-        return self._capacidad
+    def capacidad(self) -> float:
+        ''' Returns the left capacity of the vehicle in percentage. '''
+        if self._capacidad['actual'] > self._capacidad['total']:
+            self._capacidad['actual'] = self._capacidad['total']
+        return self._capacidad['actual'] / self._capacidad['total']
 
     def dar_velocidad(self) -> float:
         ''' Returns the speed of the vehicle. '''
