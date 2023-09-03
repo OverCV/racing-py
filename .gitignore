@@ -3,7 +3,7 @@
 
 # Archivos de configuración específicos de tu entorno de desarrollo (por ejemplo, [.env](https://www.google.com/search?q=.env))
 [.env](https://www.google.com/search?q=.env)
-venv
+# venv
 
 # Carpeta con archivos generados automáticamente
 [__pycache__/](https://www.google.com/search?q=__pycache__%2F)
@@ -24,3 +24,5 @@ venv
 tests
 
 # Otros archivos o carpetas específicos de tu proyecto que deseas ignorar
+
+tests
