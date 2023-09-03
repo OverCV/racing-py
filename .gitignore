@@ -1,0 +1,24 @@
+# Carpeta virtual environment
+[venv/](https://www.google.com/search?q=venv%2F)
+
+# Archivos de configuración específicos de tu entorno de desarrollo (por ejemplo, [.env](https://www.google.com/search?q=.env))
+[.env](https://www.google.com/search?q=.env)
+
+# Carpeta con archivos generados automáticamente
+[__pycache__/](https://www.google.com/search?q=__pycache__%2F)
+
+# Archivos de registro y salida de depuración
+[*.log](https://www.google.com/search?q=*.log)
+[*.txt](https://www.google.com/search?q=*.txt)
+
+# Carpeta de dependencias del proyecto
+# Asegúrate de ajustar esto según tu estructura de carpetas y nombres de archivos
+[app/dependencies/](https://www.google.com/search?q=app%2Fdependencies%2F)
+
+# Carpeta con archivos de documentación generados automáticamente
+[docs/build/](https://www.google.com/search?q=docs%2Fbuild%2F)
+
+# Carpeta con archivos de prueba
+[tests/](https://www.google.com/search?q=tests%2F)
+
+# Otros archivos o carpetas específicos de tu proyecto que deseas ignorar
