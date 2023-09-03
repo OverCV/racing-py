@@ -27,7 +27,7 @@ def test_acelerar(expected, moto_instance):
 
 @pytest.mark.parametrize(
     'expected', [
-        (5)
+        (1/4)
     ])
 def test_acelerar_cambio(expected, moto_instance):
     moto_instance.cambio()

@@ -1,6 +1,7 @@
 # Carpeta virtual environment
 [venv/](https://www.google.com/search?q=venv%2F)
 --venv/
+venv
 
 # Archivos de configuración específicos de tu entorno de desarrollo (por ejemplo, [.env](https://www.google.com/search?q=.env))
 [.env](https://www.google.com/search?q=.env)

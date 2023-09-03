@@ -17,6 +17,10 @@ class Linea:
         ''' Function to return the object '''
         return self._vehiculo
 
+    def get_largo(self) -> int:
+        ''' Function to get the pista size '''
+        return self._largo
+
     def get_pista(self) -> str:
         ''' Function to get the pista size '''
         return f'[{"_" * self._largo}]'

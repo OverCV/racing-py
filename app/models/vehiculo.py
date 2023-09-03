@@ -7,13 +7,18 @@ class Vehiculo(ABC):
     def __init__(
         self, capacidad: float, cambios: int
     ) -> object:
-        self._x_pos: float = {'final': 0, 'inicio': 0}
+        self._x_pos: float = 0
         self._velocidad: float = 0
         self._cambios: dict = {'actual': 0, 'limite': cambios}
         self._capacidad: dict = {'actual': capacidad, 'total': capacidad}
 
     @abstractmethod
-    def get_pos(self) -> dict:
+    def get_pos(self) -> float:
+        ''' Function to travel a certain distance '''
+        pass
+
+    @abstractmethod
+    def set_pos(self, pos: float) -> float:
         ''' Function to travel a certain distance '''
         pass
 

@@ -17,6 +17,9 @@ Finalmente, crea un programa que utilice estas clases y métodos para simular un
 
 Debes crear un programa que utilice estas clases y métodos para simular una carrera entre diferentes tipos de vehículos. Puedes agregar un sistema de puntuación y un cronómetro para hacerlo más interesante.
 
+## Ejecución
+Para dar ejecución al proyecto, ha de situarse sobre el directorio raíz del proyecto y ejecutar el comando `python -m main` o `python main.py`, cuál por defecto inicializará la ejecución.
+
 ## Librerías
 Mención de librerías usadas en el mini-proyecto.
 - **Venv**: Uso de entorno virtual para delimitación en instalaciones.
