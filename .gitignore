@@ -3,10 +3,14 @@
 
 # Archivos de configuración específicos de tu entorno de desarrollo (por ejemplo, [.env](https://www.google.com/search?q=.env))
 [.env](https://www.google.com/search?q=.env)
-# venv
+venv
 
 # Carpeta con archivos generados automáticamente
 [__pycache__/](https://www.google.com/search?q=__pycache__%2F)
+.pytest_cache
+tests/__pycache__
+tests/models/__pycache__
+
 
 # Archivos de registro y salida de depuración
 [*.log](https://www.google.com/search?q=*.log)
@@ -21,8 +25,5 @@
 
 # Carpeta con archivos de prueba
 [tests/](https://www.google.com/search?q=tests%2F)
-tests
 
 # Otros archivos o carpetas específicos de tu proyecto que deseas ignorar
-
-tests
