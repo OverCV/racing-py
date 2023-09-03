@@ -1,6 +1,5 @@
 # Carpeta virtual environment
 [venv/](https://www.google.com/search?q=venv%2F)
-venv
 --venv/
 
 # Archivos de configuración específicos de tu entorno de desarrollo (por ejemplo, [.env](https://www.google.com/search?q=.env))
@@ -8,10 +7,9 @@ venv
 
 # Carpeta con archivos generados automáticamente
 [__pycache__/](https://www.google.com/search?q=__pycache__%2F)
-.pytest_cache
-tests/__pycache__
-tests/models/__pycache__
-
+--.pytest_cache
+--tests/__pycache__
+--tests/models/__pycache__
 
 # Archivos de registro y salida de depuración
 [*.log](https://www.google.com/search?q=*.log)

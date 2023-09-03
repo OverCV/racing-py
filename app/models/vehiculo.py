@@ -5,10 +5,11 @@ class Vehiculo(ABC):
     ''' Class Vehiculo is used to model different vehicles. '''
 
     def __init__(
-        self, velocidad: float, capacidad: float, cambios: int
+        self, capacidad: float, cambios: int
     ) -> object:
+        self._x_pos: int = 0
+        self._velocidad: float = 0
         self._cambios: dict = {'actual': 0, 'limite': cambios}
-        self._velocidad: float = velocidad
         self._capacidad: dict = {'actual': capacidad, 'total': capacidad}
 
     @abstractmethod

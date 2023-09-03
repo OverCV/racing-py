@@ -4,7 +4,7 @@ from app.models.moto import Moto
 
 @pytest.fixture
 def moto_instance():
-    moto = Moto(10, 11, 4, 100, 5)
+    moto = Moto(11, 4, 100, 5)
     yield moto
 
 

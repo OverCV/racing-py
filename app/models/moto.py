@@ -6,12 +6,15 @@ class Moto(Vehiculo):
     ''' Class Moto is used to compete. '''
 
     def __init__(
-        self, velocidad: float, capacidad: float, cambios: int,
+        self, capacidad: float, cambios: int,
         aceleracion: int, agilidad: int
     ) -> object:
-        super().__init__(velocidad, capacidad, cambios)
+        super().__init__(capacidad, cambios)
         self._aceleracion = aceleracion
         self._agilidad = agilidad
+
+    def avanzar(self) -> float:
+        ''' Function to advance into the track '''
 
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
@@ -19,7 +22,7 @@ class Moto(Vehiculo):
             return False
         self._capacidad['actual'] -= KM_GAL_MOTO * \
             (self._cambios['actual'] / 10)
-        self._velocidad += self._aceleracion
+        self._velocidad += self._aceleracion + self._velocidad*self._agilidad/10
         return True
 
     def cambio(self) -> bool:
