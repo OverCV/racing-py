@@ -13,20 +13,30 @@ class Moto(Vehiculo):
         self._aceleracion = aceleracion
         self._agilidad = agilidad
 
-    def get_pos(self) -> float:
+    def get_pos(self) -> dict:
         ''' Function to know the vehicle position '''
         return self._x_pos
+
+    def get_cambios(self) -> dict:
+        ''' Function to travel a certain distance '''
+        return self._cambios
+
+    def get_capacidad(self) -> dict:
+        ''' Function to get the tank capacity '''
+        return self._capacidad
 
     def avanzar(self) -> float:
         ''' Function to advance into the track '''
 
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
+        cambio_perc: float = (self._cambios['actual'] / 10)
         if self.capacidad() <= 0:
             return False
-        self._capacidad['actual'] -= KM_GAL_MOTO * \
-            (self._cambios['actual'] / 10)
-        self._velocidad += self._aceleracion + self._velocidad*self._agilidad/10
+        self._capacidad['actual'] -= KM_GAL_MOTO * cambio_perc
+
+        self._velocidad += (self._aceleracion +
+                            self._velocidad * (self._agilidad/10)) * cambio_perc
         return True
 
     def cambio(self) -> bool:

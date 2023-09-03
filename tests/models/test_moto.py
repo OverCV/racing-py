@@ -18,6 +18,26 @@ def test_capacidad(expected, moto_instance):
 
 @pytest.mark.parametrize(
     'expected', [
+        (0)
+    ])
+def test_acelerar(expected, moto_instance):
+    moto_instance.acelerar()
+    assert moto_instance.dar_velocidad() == expected
+
+
+@pytest.mark.parametrize(
+    'expected', [
+        (5)
+    ])
+def test_acelerar_cambio(expected, moto_instance):
+    moto_instance.cambio()
+    moto_instance.acelerar()
+    assert moto_instance.dar_velocidad() == expected
+
+
+@pytest.mark.parametrize(
+    'expected', [
+        # Can make 4 gear changes #
         (True, True, True, True, False)
     ])
 def test_cambio(expected, moto_instance):

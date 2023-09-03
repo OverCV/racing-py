@@ -22,7 +22,7 @@ class Menu:
 
     def set_up(self) -> None:
         ''' Function to start competition '''
-        
+        self._competencia.iniciar()
 
     def mostrar_ganador(self) -> None:
         ''' Function to show the winner '''
