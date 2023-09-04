@@ -26,13 +26,13 @@ class Menu:
         self.mostrar_pista(vistas_a, vistas_b)
 
         if captura_a < captura_b:
-            print(f'\n🥇 Felicitaciones corredor A! Tiempo: {captura_a} 🥇')
-            print(f'\n🥈 Suerte a la próxima corredor B! {captura_b} 🥈\n')
+            print(f'\n🥇 Felicitaciones corredor A! Tiempo: {captura_a/50} (sec) 🥇')
+            print(f'\n🥈 Suerte a la próxima corredor B! {captura_b/50} (sec) 🥈\n')
         elif captura_a > captura_b:
-            print(f'\n🥇 Felicitaciones corredor B! Tiempo: {captura_b} 🥇')
-            print(f'\n🥈 Suerte a la próxima corredor A! Tiempo: {captura_a} 🥈\n')
+            print(f'\n🥇 Felicitaciones corredor B! Tiempo: {captura_b/50} (sec) 🥇')
+            print(f'\n🥈 Suerte a la próxima corredor A! Tiempo: {captura_a/50} (sec) 🥈\n')
         else:
-            print(f'\n🥇 Soís unos másters... Empate! Tiempos: {captura_b} = {captura_a}  🥇')
+            print(f'\n🥇 Soís unos másters... Empate! Tiempos: {captura_b/50} = {captura_a}  🥇')
 
     def menu(self) -> None:
         ''' Function to show the menu '''

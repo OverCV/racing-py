@@ -128,6 +128,8 @@ class Competencia:
         prompt = (
             '\n| Tipo de vehículo: |'
             '\n| a ] Moto          |'
+            # '\n| b ] Auto          |'
+            # '\n| c ] Camión        |'
         )
 
         literal: str = ih.in_str(prompt, ('a'))
