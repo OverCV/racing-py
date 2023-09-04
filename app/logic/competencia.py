@@ -126,14 +126,14 @@ class Competencia:
         ''' Function to create vehicles '''
         _vehiculo_ctrl: Vehiculo_ctrl = Vehiculo_ctrl()
         prompt = (
-            '\n| Tipo de vehículo:                 |'
-            '\n| a ] Moto | b ] Carro | c ] Camion |'
+            '\n| Tipo de vehículo: |'
+            '\n| a ] Moto          |'
         )
 
-        literal: str = ih.in_str(prompt, ('a', 'b', 'c'))
+        literal: str = ih.in_str(prompt, ('a'))
         self.options: dict = {
             'a': _vehiculo_ctrl.crear_moto,
-            # 'b': vc.nueva_moto, #!! To complete
-            # 'c': vc.nueva_moto, #!! To complete
+            # 'b': _vehiculo_ctrl.crear_carro, #!! To complete
+            # 'c': _vehiculo_ctrl.crear_camion, #!! To complete
         }
         return self.options[literal]()
