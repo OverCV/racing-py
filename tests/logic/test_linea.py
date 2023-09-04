@@ -8,9 +8,9 @@ def linea_instance():
     yield linea
 
 
-@pytest.mark.parametrize(
-    'args, expected', [
-        ()
-    ])
-def test_locar_vehiculo(pos, expected, linea_instance):
-    assert linea_instance.locar_vehiculo(pos) == expected
+# @pytest.mark.parametrize(
+#     'args, expected', [
+#         ()
+#     ])
+# def test_locar_vehiculo(pos, expected, linea_instance):
+#     assert linea_instance.locar_vehiculo(pos) == expected

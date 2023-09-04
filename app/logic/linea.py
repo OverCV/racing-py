@@ -11,7 +11,7 @@ class Linea:
 
     def init_pista(self) -> None:
         ''' Function to set the track '''
-        self._pista = f'[{self.get_pista()}]'
+        self._pista = f'[🏁{self.get_pista()}]'
 
     def get_vehiculo(self) -> Vehiculo:
         ''' Function to return the object '''

@@ -1,8 +1,8 @@
 import random
 
-AVG_CAP_MOTO: float = 15 # Gallons
-AVG_CAP_CARRO: float = 80 # Gallons
-AVG_CAP_CAMION: float = 225 # Gallons
+AVG_CAP_MOTO: float = 15  # Gallons
+AVG_CAP_CARRO: float = 80  # Gallons
+AVG_CAP_CAMION: float = 225  # Gallons
 
 KM_GAL_MOTO: float = 0.03
 KM_GAL_CARRO: float = 0.08
@@ -12,7 +12,9 @@ AUTO_VISTA = ['🚗', '🚙', '🚕', '🚓', '🏎️']
 CAMION_VISTA = ['🚑', '🚐', '🚚', '🚛', '🚒']
 MOTO_VISTA = ['🛵', '🏍️']
 
-GRID = '''
+# Maybe 🏍️💨? Haha.
+
+GRID_IDEA = '''
 [ Vehicle I: ]
 [_______________________________________________________🚗]
 [ Vehicle II: ]

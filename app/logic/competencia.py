@@ -1,4 +1,3 @@
-import math
 import pandas as pd
 
 from ..helpers.helper import InputHelper as ih
@@ -13,11 +12,12 @@ class Competencia:
     def __init__(self) -> None:
         self._linea_a: Linea
         self._linea_b: Linea
-        self._registros: dict = {'a': None, 'b': None}
-        self._vistas = {'a': [], 'b': []}
 
-        self._data_a: pd.DataFrame = None
-        self._data_b: pd.DataFrame = None
+        self._data_a: dict = {'vistas': None, 'registros': None}
+        self._data_b: dict = {'vistas': None, 'registros': None}
+
+        self._dframe_a: pd.DataFrame = None
+        self._dframe_b: pd.DataFrame = None
 
     def iniciar(self) -> None:
         ''' Function that sets the competitors data into the attributes to extract it later '''
@@ -26,21 +26,19 @@ class Competencia:
         self._linea_b.init_pista()
 
         vistas_a, captura_a, dframe_a = self.conducir(self._linea_a)
-        self._data_a: pd.DataFrame = dframe_a
+        self._dframe_a: pd.DataFrame = dframe_a
 
-        # vistas_b, captura_b = self.conducir(self._linea_b)
-        # self._data_b: pd.DataFrame = dframe_b
-        # print(vistas_a) #!! no
+        vistas_b, captura_b, dframe_b = self.conducir(self._linea_b)
+        self._dframe_b: pd.DataFrame = dframe_b
 
-        # !! Incorrect btw, use one below
-        self._vistas['a'] = (vistas_a, captura_a)
-        # self._pista['a'], self._pista['b'] = (vistas_a, captura_a), (vistas_b, captura_b)
+        self._data_a['vistas'], self._data_a['registros'] = vistas_a, captura_a
+        self._data_b['vistas'], self._data_b['registros'] = vistas_b, captura_b
 
-    def get_pista(self) -> dict[list[str], list[str]]:
+    def get_data(self) -> tuple[dict[str], dict[str]]:
         ''' Function to get the track '''
-        return self._vistas
+        return self._data_a, self._data_b
 
-    def conducir(self, linea: Linea) -> tuple[list[str], int]:
+    def conducir(self, linea: Linea) -> tuple[list[str], int, pd.DataFrame]:
         '''
         Function to drive the vehicle, it's planned to function as:
         If the vehicle is stopped, it will turn on
@@ -108,8 +106,6 @@ class Competencia:
             tiempo += 1
 
         dframe = pd.DataFrame(data)
-        # print(len(data['tiempo']))
-        print(dframe)
         return vistas, captura, dframe
 
     def deininir_pos(self, vehiculo: Vehiculo, tiempo: int) -> float:
@@ -130,14 +126,14 @@ class Competencia:
         ''' Function to create vehicles '''
         _vehiculo_ctrl: Vehiculo_ctrl = Vehiculo_ctrl()
         prompt = (
-            '\n| Tipo de vehículo:              |'
-            '\n| a) Moto | b) Carro | c) Camion |'
+            '\n| Tipo de vehículo:                 |'
+            '\n| a ] Moto | b ] Carro | c ] Camion |'
         )
 
         literal: str = ih.in_str(prompt, ('a', 'b', 'c'))
         self.options: dict = {
             'a': _vehiculo_ctrl.crear_moto,
-            # 'b': vc.nueva_moto, #!!
+            # 'b': vc.nueva_moto, #!! To complete
             # 'c': vc.nueva_moto, #!! To complete
         }
         return self.options[literal]()
