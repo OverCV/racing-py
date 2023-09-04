@@ -67,5 +67,5 @@ class Moto(Vehiculo):
         return self._velocidad * (self._agilidad / 10)
 
     def __str__(self) -> str:
-        view = MOTO_VISTA[-1] if self._es_deportivo else AUTO_VISTA[0]
+        view = MOTO_VISTA[-1] if self._agilidad > 5 else MOTO_VISTA[0]
         return view

@@ -55,3 +55,8 @@ class Vehiculo(ABC):
     def dar_velocidad(self) -> float:
         ''' Returns the speed of the vehicle. '''
         pass
+
+    @abstractmethod
+    def __str__(self) -> str:
+        ''' Function to print the image of the vehicle '''
+        pass

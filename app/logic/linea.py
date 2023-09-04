@@ -9,9 +9,9 @@ class Linea:
         self._largo: int = largo
         self._pista: str = ''
 
-    def set_pista(self) -> None:
+    def init_pista(self) -> None:
         ''' Function to set the track '''
-        self._pista = self.get_pista()
+        self._pista = f'[{self.get_pista()}]'
 
     def get_vehiculo(self) -> Vehiculo:
         ''' Function to return the object '''
@@ -23,7 +23,7 @@ class Linea:
 
     def get_pista(self) -> str:
         ''' Function to get the pista size '''
-        return f'[{"_" * self._largo}]'
+        return '_' * self._largo
 
     def puede_locar(self, pos: float) -> bool:
         ''' Function to determine if the position the vehicle into the track is valid '''
@@ -37,8 +37,7 @@ class Linea:
         ''' Function to set the vehicle into the track '''
         if not self.puede_locar(pos):
             return '[ 🏆🏁 Finished 🏁🏆 ]'
-        vista_pista = self._pista[int(-pos)] \
-            .replace(' ', self.vehiculo.__str__())
-        return vista_pista
 
-        # self._pista = self._pista[:int(pos)] + self._pista[int(pos):].replace(' ', self._vehicle_a.get_vista())
+        return self._pista[:-int(pos+3)] + self._vehiculo.__str__() + self._pista[-int(pos+2):]
+        # self._pista[-int(pos + 2)] \
+        # .replace(' ', )

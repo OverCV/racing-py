@@ -1,4 +1,5 @@
 import math
+import pandas as pd
 
 from ..helpers.helper import InputHelper as ih
 from ..models.vehiculo import Vehiculo
@@ -10,24 +11,34 @@ class Competencia:
     ''' Class Competencia is used to compare vehicles and set a winner. '''
 
     def __init__(self) -> None:
-        self._historicos: dict = {'a': None, 'b': None}
         self._linea_a: Linea
         self._linea_b: Linea
-        self._pista = {'a': [], 'b': []}
+        self._registros: dict = {'a': None, 'b': None}
+        self._vistas = {'a': [], 'b': []}
+
+        self._data_a: pd.DataFrame = None
+        self._data_b: pd.DataFrame = None
 
     def iniciar(self) -> None:
-        ''' Function that returns the winner vehicle  '''
+        ''' Function that sets the competitors data into the attributes to extract it later '''
         self.nueva_pista()
-        vistas_a, captura_a = self.conducir(self._linea_a)
+        self._linea_a.init_pista()
+        self._linea_b.init_pista()
+
+        vistas_a, captura_a, dframe_a = self.conducir(self._linea_a)
+        self._data_a: pd.DataFrame = dframe_a
+
         # vistas_b, captura_b = self.conducir(self._linea_b)
+        # self._data_b: pd.DataFrame = dframe_b
+        # print(vistas_a) #!! no
 
         # !! Incorrect btw, use one below
-        self._pista['a'] = (vistas_a, captura_a)
+        self._vistas['a'] = (vistas_a, captura_a)
         # self._pista['a'], self._pista['b'] = (vistas_a, captura_a), (vistas_b, captura_b)
 
     def get_pista(self) -> dict[list[str], list[str]]:
         ''' Function to get the track '''
-        return self._pista
+        return self._vistas
 
     def conducir(self, linea: Linea) -> tuple[list[str], int]:
         '''
@@ -38,6 +49,10 @@ class Competencia:
         Speed will increase the position and decreases the capacity
         if capacity overcomes in a ratio the number of changes that the vehicle has, it will change to the next gear.
         '''
+
+        data = {
+            'tiempo': [], 'meta': [], 'distancia': [], 'cambio_actual': [], 'cambio_limite': [], 'fase_continua': [], 'fase_discreta': [], 'velocidad': [], 'posicion': []
+        }
 
         tiempo: int = 0
         vehiculo: Vehiculo = linea.get_vehiculo()
@@ -78,10 +93,24 @@ class Competencia:
                 vista = linea.locar_vehiculo(new_pos)
                 vistas.append(vista)
 
+            # ? TODO: This isn't necesary, just for reports #?[00]: .
+            data['tiempo'].append(tiempo)
+            data['meta'].append(meta)
+            data['distancia'].append(distancia)
+            data['cambio_actual'].append(vehiculo.get_cambios()['actual'])
+            data['cambio_limite'].append(vehiculo.get_cambios()['limite'])
+            data['fase_continua'].append(fase_continua * vehiculo.capacidad())
+            data['fase_discreta'].append(fase_discreta)
+            data['velocidad'].append(vehiculo.dar_velocidad())
+            data['posicion'].append(vehiculo.get_pos())
+
             # Final step, next iteration #
             tiempo += 1
 
-        return vistas, captura
+        dframe = pd.DataFrame(data)
+        # print(len(data['tiempo']))
+        print(dframe)
+        return vistas, captura, dframe
 
     def deininir_pos(self, vehiculo: Vehiculo, tiempo: int) -> float:
         ''' Function to determine the position of the vehicle '''
