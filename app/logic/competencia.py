@@ -102,7 +102,7 @@ class Competencia:
             data['velocidad'].append(vehiculo.dar_velocidad())
             data['posicion'].append(vehiculo.get_pos())
 
-            # Final step, next iteration #
+            # Final step, next iteration 🦜 #
             tiempo += 1
 
         dframe = pd.DataFrame(data)
@@ -133,9 +133,9 @@ class Competencia:
         )
 
         literal: str = ih.in_str(prompt, ('a'))
-        self.options: dict = {
+        self.opciones: dict = {
             'a': _vehiculo_ctrl.crear_moto,
             # 'b': _vehiculo_ctrl.crear_carro, #!! To complete
             # 'c': _vehiculo_ctrl.crear_camion, #!! To complete
         }
-        return self.options[literal]()
+        return self.opciones[literal]()

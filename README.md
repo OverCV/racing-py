@@ -25,6 +25,8 @@ Mención de librerías usadas en el mini-proyecto.
 - **Venv**: Uso de entorno virtual para delimitación en instalaciones.
 - **Pytest**
 Instalación vía `python -m pip install pytest` para tests unitarios.
+- **Pandas**
+Instalación con `python -m pip install pandas` para visualización de históricos en datos de competidores.
 
 ## Desarrollo
 Se diagnosticarán detalles en el futuro desarrollo.
