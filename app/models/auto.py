@@ -2,16 +2,17 @@ from ..constants.const import *
 from .vehiculo import Vehiculo
 
 
-class Moto(Vehiculo):
-    ''' Class Moto is used to compete. '''
+class Auto(Vehiculo):
+    ''' Class Auto is used to compete. '''
 
     def __init__(
         self, capacidad: float, cambios: int,
-        aceleracion: int, agilidad: int
+        tiene_nitro: bool, es_deportivo: bool
     ) -> object:
         super().__init__(capacidad, cambios)
-        self._aceleracion = aceleracion
-        self._agilidad = agilidad
+        self._tiene_nitro: int = tiene_nitro
+        self._es_deportivo: int = es_deportivo
+        self._img: str = ''
 
     def get_pos(self) -> float:
         ''' Function to know the vehicle position '''
@@ -29,18 +30,15 @@ class Moto(Vehiculo):
         ''' Function to get the tank capacity '''
         return self._capacidad
 
-    def avanzar(self) -> float:
-        ''' Function to advance into the track '''
-
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
-        cambio_perc: float = (self._cambios['actual'] / 100)
+        cambio_perc: float = (self._cambios['actual'] / 10)
         if self.capacidad() <= 0:
             return False
-        self._capacidad['actual'] -= KM_GAL_MOTO * cambio_perc
+        self._capacidad['actual'] -= KM_GAL_CARRO * cambio_perc
 
-        self._velocidad += self._aceleracion * \
-            (self._agilidad/10) * cambio_perc
+        self._velocidad += (self._tiene_nitro * cambio_perc) + \
+            (self._cambios['limite'] * self._es_deportivo) * 0.1
         return True
 
     def cambio(self) -> bool:
@@ -65,8 +63,9 @@ class Moto(Vehiculo):
 
     def dar_velocidad(self) -> float:
         ''' Returns the speed of the vehicle. '''
-        return self._velocidad * (self._agilidad / 10)
+        return self._velocidad + (self._cambios['limite'] * self._es_deportivo) * 0.1
 
     def __str__(self) -> str:
-        es_agil: bool = self._agilidad > 5 # magic number?
-        return get_moto(es_agil)
+        if self._img == '':
+            self._img = get_auto(self._es_deportivo)
+        return self._img

@@ -1,7 +1,7 @@
 from ..helpers.helper import InputHelper as ih
 from ..models.moto import Moto
-# from ..models.auto import auto
-# from ..models.camion import camion
+from ..models.auto import Auto
+from ..models.camion import Camion
 
 
 class Vehiculo_ctrl:
@@ -14,7 +14,7 @@ class Vehiculo_ctrl:
         ''' Function to create a new moto '''
         data: list = []
         prompts: list = [
-            'Capacidad (litros)', 'Número de cambios', 'Aceleración inicial (m/s^2)',
+            'Capacidad (litros)(max:15)', 'Número de cambios', 'Aceleración inicial (m/s^2)',
             'Determine el nivel de agilidad de la moto (1 al 10)'
         ]
         for prompt in prompts:
@@ -23,28 +23,33 @@ class Vehiculo_ctrl:
             data[-1] = 10
         return Moto(*data)
 
-    # def crear_auto(self) -> object:
-    #     ''' Function to create a new moto '''
-    #     data: list = []
-    #     prompts = ['Capacidad (en litros)', 'Número de cambios',
-    #                'Aceleración inicial (m/s^2)',
-    #                'Determine el nivel de agilidad de la moto (1 al 10)']
+    def crear_auto(self) -> object:
+        ''' Function to create a new auto '''
+        data: list = []
+        int_prompts = [
+            'Capacidad (en litros)(max:80)', 'Número de cambios'
+        ]
+        bool_prompts = [
+            'Tiene nitro?', 'Es un auto deportivo?'
+        ]
 
-    #     for prompt in prompts:
-    #         data.append(ih.in_int(prompt))
-    #     if data[-1] > 10:
-    #         data[-1] = 10
-    #     self.moto: Moto = Moto(*data)
+        for prompt in int_prompts:
+            data.append(ih.in_int(f'{prompt}: '))
+        for prompt in bool_prompts:
+            data.append(ih.in_bool(f'{prompt}: '))
 
-    # def crear_camiono(self) -> object:
-    #     ''' Function to create a new moto '''
-    #     data: list = []
-    #     prompts = ['Capacidad (en litros)', 'Número de cambios',
-    #                'Aceleración inicial (m/s^2)',
-    #                'Determine el nivel de agilidad de la moto (1 al 10)']
+        return Auto(*data)
 
-    #     for prompt in prompts:
-    #         data.append(ih.in_int(prompt))
-    #     if data[-1] > 10:
-    #         data[-1] = 10
-    #     self.moto: Moto = Moto(*data)
+    def crear_camion(self) -> object:
+        ''' Function to create a new camion '''
+        data: list = []
+        int_prompts = [
+            'Capacidad (en litros)(max:225)', 'Número de cambios',
+            'Nivel de resistencia (1 al 10)'
+        ]
+
+        for prompt in int_prompts:
+            data.append(ih.in_int(f'{prompt}: '))
+        data.append(ih.in_bool('Tiene un motor diesel?'))
+
+        return Camion(*data)

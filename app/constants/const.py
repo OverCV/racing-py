@@ -6,6 +6,7 @@ AVG_CAP_CAMION: float = 225  # Gallons
 
 KM_GAL_MOTO: float = 0.03
 KM_GAL_CARRO: float = 0.08
+KM_GAL_CAMION: float = 1/7
 KM_DIESEL_CAMION: float = 2/7
 
 AUTO_VISTA = ['🚗', '🚙', '🚕', '🚓', '🏎️']
@@ -32,7 +33,7 @@ def get_camion() -> str:
     return CAMION_VISTA[random.randint(0, len(CAMION_VISTA) - 1)]
 
 
-def get_moto(es_deportivo: bool = False) -> str:
-    if es_deportivo:
+def get_moto(es_agil: bool = False) -> str:
+    if es_agil:
         return MOTO_VISTA[-1]
     return MOTO_VISTA[0]

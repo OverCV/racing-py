@@ -38,8 +38,8 @@ class InputHelper:
     @staticmethod
     def in_bool(prompt):
         while True:
-            user_input = input(prompt).strip().lower()
-            if user_input in ('yes', 'y', 'si', 's'):
+            user_input = input(prompt+'\n[YES|no]: ').strip().lower()
+            if user_input in ('yes', 'y', 'si', 's', ''):
                 return True
             elif user_input in ('no', 'n'):
                 return False

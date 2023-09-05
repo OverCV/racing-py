@@ -38,6 +38,10 @@ class Competencia:
         ''' Function to get the track '''
         return self._data_a, self._data_b
 
+    def get_reportes(self) -> tuple[pd.DataFrame, pd.DataFrame]:
+        ''' Function to get the runners time and statistics reports '''
+        return self._dframe_a, self._dframe_b        
+
     def conducir(self, linea: Linea) -> tuple[list[str], int, pd.DataFrame]:
         '''
         Function to drive the vehicle, it's planned to function as:
@@ -128,14 +132,14 @@ class Competencia:
         prompt = (
             '\n| Tipo de vehículo: |'
             '\n| a ] Moto          |'
-            # '\n| b ] Auto          |'
-            # '\n| c ] Camión        |'
+            '\n| b ] Auto          |'
+            '\n| c ] Camión        |'
         )
 
-        literal: str = ih.in_str(prompt, ('a'))
+        literal: str = ih.in_str(prompt, ('a', 'b', 'c'))
         self.opciones: dict = {
             'a': _vehiculo_ctrl.crear_moto,
-            # 'b': _vehiculo_ctrl.crear_carro, #!! To complete
-            # 'c': _vehiculo_ctrl.crear_camion, #!! To complete
+            'b': _vehiculo_ctrl.crear_auto,
+            'c': _vehiculo_ctrl.crear_camion
         }
         return self.opciones[literal]()
