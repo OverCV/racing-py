@@ -1,3 +1,4 @@
+from ..decorators.decs import *
 from ..constants.const import *
 from .vehiculo import Vehiculo
 
@@ -14,6 +15,7 @@ class Camion(Vehiculo):
         self._es_diesel: int = es_diesel
         self._img: str = ''
 
+    @impulso(cambios=lambda self: self._cambios)
     def get_pos(self) -> float:
         ''' Function to know the vehicle position '''
         return self._x_pos

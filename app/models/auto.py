@@ -1,3 +1,4 @@
+from ..decorators.decs import *
 from ..constants.const import *
 from .vehiculo import Vehiculo
 
@@ -14,6 +15,7 @@ class Auto(Vehiculo):
         self._es_deportivo: int = es_deportivo
         self._img: str = ''
 
+    @impulso(cambios=lambda self: self._cambios)
     def get_pos(self) -> float:
         ''' Function to know the vehicle position '''
         return self._x_pos
@@ -32,13 +34,13 @@ class Auto(Vehiculo):
 
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
-        cambio_perc: float = (self._cambios['actual'] / 10)
+        cambio_perc: float = self._cambios['actual']
         if self.capacidad() <= 0:
             return False
         self._capacidad['actual'] -= KM_GAL_CARRO * cambio_perc
 
         self._velocidad += (self._tiene_nitro * cambio_perc) + \
-            (self._cambios['limite'] * self._es_deportivo) * 0.1
+            (self._cambios['limite'] * self._es_deportivo) * 0.0001
         return True
 
     def cambio(self) -> bool:

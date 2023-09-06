@@ -1,3 +1,4 @@
+from ..decorators.decs import *
 from ..constants.const import *
 from .vehiculo import Vehiculo
 
@@ -13,6 +14,8 @@ class Moto(Vehiculo):
         self._aceleracion = aceleracion
         self._agilidad = agilidad
 
+    # @impulso(cambios=self._cambios)
+    @impulso(cambios=lambda self: self._cambios)
     def get_pos(self) -> float:
         ''' Function to know the vehicle position '''
         return self._x_pos
@@ -29,18 +32,15 @@ class Moto(Vehiculo):
         ''' Function to get the tank capacity '''
         return self._capacidad
 
-    def avanzar(self) -> float:
-        ''' Function to advance into the track '''
-
     def acelerar(self) -> bool:
         ''' Function to travel a certain distance '''
-        cambio_perc: float = (self._cambios['actual'] / 100)
+        cambio_perc: float = self._cambios['actual']
         if self.capacidad() <= 0:
             return False
         self._capacidad['actual'] -= KM_GAL_MOTO * cambio_perc
 
         self._velocidad += self._aceleracion * \
-            (self._agilidad/10) * cambio_perc
+            self._agilidad * cambio_perc / 100
         return True
 
     def cambio(self) -> bool:
@@ -68,5 +68,5 @@ class Moto(Vehiculo):
         return self._velocidad * (self._agilidad / 10)
 
     def __str__(self) -> str:
-        es_agil: bool = self._agilidad > 5 # magic number?
+        es_agil: bool = self._agilidad > 5  # magic number?
         return get_moto(es_agil)

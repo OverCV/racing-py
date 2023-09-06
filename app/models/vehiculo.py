@@ -1,3 +1,4 @@
+from ..decorators.decs import *
 from abc import ABC, abstractmethod, abstractproperty
 
 

@@ -40,7 +40,7 @@ class Competencia:
 
     def get_reportes(self) -> tuple[pd.DataFrame, pd.DataFrame]:
         ''' Function to get the runners time and statistics reports '''
-        return self._dframe_a, self._dframe_b        
+        return self._dframe_a, self._dframe_b
 
     def conducir(self, linea: Linea) -> tuple[list[str], int, pd.DataFrame]:
         '''
@@ -56,6 +56,7 @@ class Competencia:
             'tiempo': [], 'meta': [], 'distancia': [], 'cambio_actual': [], 'cambio_limite': [], 'fase_continua': [], 'fase_discreta': [], 'velocidad': [], 'posicion': []
         }
 
+        captura: int = 0
         tiempo: int = 0
         vehiculo: Vehiculo = linea.get_vehiculo()
         meta: int = linea.get_largo()
